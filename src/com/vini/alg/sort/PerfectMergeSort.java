@@ -23,7 +23,7 @@ public class PerfectMergeSort {
 	}
 	
 	private static <T> void sort(Comparable<T>[] src, Comparable<T>[] dst, int lo, int hi) {
-		if (hi <= lo + CUTOFF) {
+		if (hi <= lo + CUTOFF - 1) {
 			insertionSort(dst, lo, hi);
 			return;
 		}
@@ -63,10 +63,6 @@ public class PerfectMergeSort {
     }
     
 	public static <T> void sort(Comparable<T>[] a) {
-//		@SuppressWarnings("unchecked")
-//		Comparable<T>[] aux = (Comparable<T>[])Array.newInstance(Comparable.class, a.length);
-//		sort(a, aux, 0, a.length-1);		
-		
         Comparable<T>[] aux = a.clone();
         sort(aux, a, 0, a.length-1);  
 	}

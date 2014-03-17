@@ -31,6 +31,8 @@ public class MergeSort {
 		int mid = lo + (hi - lo)/2;
 		sort(a, aux, lo, mid);
 		sort(a, aux, mid+1, hi);
+		//efficiency
+		if (a[mid+1].compareTo((T) a[mid]) >= 0) return; //see PerfectMergeSort.java
 		merge(a, aux, lo, mid, hi);
 	}
 	
