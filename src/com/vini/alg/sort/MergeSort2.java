@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
  */
 public class MergeSort2 {
 	//default true, order by ascending
-	static boolean order = true;
+	static boolean ASCENDING = true;
 	
 	private MergeSort2() {}
 	
@@ -37,7 +37,7 @@ public class MergeSort2 {
 	}
 	
 	public static <T> void sort(Comparable<T>[] a, boolean asc) {
-		order = asc;
+		ASCENDING = asc;
 		@SuppressWarnings("unchecked")
 		Comparable<T>[] aux = (Comparable<T>[])Array.newInstance(Comparable.class, a.length);
 		sort(a, aux, 0, a.length-1);		
@@ -49,7 +49,7 @@ public class MergeSort2 {
 	}
 
 	private static <T> boolean compare(Comparable<T> x, Comparable<T> y) {
-		if (order)
+		if (ASCENDING)
 			return x.compareTo((T) y) < 0;
 		else
 			return x.compareTo((T) y) > 0;

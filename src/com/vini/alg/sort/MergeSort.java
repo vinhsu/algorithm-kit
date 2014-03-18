@@ -37,6 +37,7 @@ public class MergeSort {
 	}
 	
 	public static <T> void sort(Comparable<T>[] a) {
+		//Comparable[] aux = new Comparable[a.length];
 		@SuppressWarnings("unchecked")
 		Comparable<T>[] aux = (Comparable<T>[])Array.newInstance(Comparable.class, a.length);
 		sort(a, aux, 0, a.length-1);		
