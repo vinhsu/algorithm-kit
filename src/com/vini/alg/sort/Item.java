@@ -46,6 +46,6 @@ public final class Item implements Comparable<Item>{
 	}
 	@Override
 	public String toString() {
-		return "[Id="+this.id+", name="+this.name+", size="+this.price+"]";
+		return "[Id="+this.id+", name="+this.name+", price="+this.price+"]";
 	}
 }
