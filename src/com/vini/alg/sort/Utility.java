@@ -1,9 +1,21 @@
 package com.vini.alg.sort;
 
 import java.util.Comparator;
+import java.util.Random;
 
 public class Utility {
 	
+    private static Random random;    // pseudo-random number generator
+    private static long seed;        // pseudo-random number generator seed
+
+    // static initializer
+    static {
+        // this is how the seed was set in Java 1.4
+        seed = System.currentTimeMillis();
+        random = new Random(seed);
+    }
+
+
 	public static final Comparator ICOMPARATOR = new IComparator();
 	
 	
@@ -39,4 +51,17 @@ public class Utility {
 		}
 	}
 
+    public static void shuffle(Object[] a) {
+        int N = a.length;
+        for (int i = 0; i < N; i++) {
+            int r = i + uniform(N-i);     // between i and N-1
+            Object temp = a[i];
+            a[i] = a[r];
+            a[r] = temp;
+        }
+    }
+    
+    public static int uniform(int N) {
+        return random.nextInt(N);
+    }
 }
