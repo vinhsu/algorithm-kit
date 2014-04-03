@@ -47,6 +47,21 @@ public class QuickSort {
         a[j] = swap;
     }
     
+    public static Comparable select(Comparable[] a, int k) {
+    	if (k<0 || k > a.length) {
+    		throw new IndexOutOfBoundsException("Selected element out of bounds");
+    	}
+    	Utility.shuffle(a);
+    	int lo = 0, hi = a.length - 1;
+    	while (hi > lo) {
+    		int i = partition(a, lo, hi);
+    		if (i > k) hi = i - 1;
+    		else if (i < k) lo = i + 1;
+    		else return a[i];
+    	}
+    	return a[lo];
+    }
+    
 	private static <T> void display(Comparable[] a) {
         for (Comparable i : a) {
             System.out.print(i+ ",");
@@ -64,6 +79,11 @@ public class QuickSort {
 		System.out.println("\nafter:");
 		display(a);
 		
+		System.out.println("\n\n----------------------------------");
+		int k=5; //array index
+		Comparable v =select(a, k);
+		System.out.println("find kth smallest item, k="+(k+1)+", v="+v);
+				
 		System.out.println("\n\n----------------------------------");
 		String[] b = {"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
 		System.out.println("before :");
