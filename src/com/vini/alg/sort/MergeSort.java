@@ -32,7 +32,7 @@ public class MergeSort {
 		sort(a, aux, lo, mid);
 		sort(a, aux, mid+1, hi);
 		//efficiency
-		if (a[mid+1].compareTo((T) a[mid]) >= 0) return; //see PerfectMergeSort.java
+		if (!less(a[mid+1], a[mid])) return; //see PerfectMergeSort.java
 		merge(a, aux, lo, mid, hi);
 	}
 	
@@ -43,6 +43,10 @@ public class MergeSort {
 		sort(a, aux, 0, a.length-1);		
 	}
 	
+    private static <T> boolean less(Comparable<T> a, Comparable<T> b) {
+        return (a.compareTo((T)b) < 0);
+    }
+    
 	private static <T> void display(Comparable<T>[] a) {		
 		for (Comparable<T> x : a) 
 			System.out.print(" "+x);
