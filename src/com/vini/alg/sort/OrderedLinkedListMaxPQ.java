@@ -9,6 +9,7 @@ public class OrderedLinkedListMaxPQ<T extends Comparable<T>> {
 	
     public boolean isEmpty()   { return N == 0; }
     public int size()          { return N; }
+    
     public Node<T> delMax() {
     	N--;
     	Node<T> max = head;
@@ -33,7 +34,7 @@ public class OrderedLinkedListMaxPQ<T extends Comparable<T>> {
     }
 	
     private boolean less(Node<T> v, Node<T> w) {
-        return (v.val.compareTo(w.val) < 0);
+        return (v.compareTo(w) < 0);
     }
     
 	public static void main(String[] args) {
@@ -63,6 +64,10 @@ public class OrderedLinkedListMaxPQ<T extends Comparable<T>> {
 		T val;
 		Node(T val) {
 			this.val = val;
+		}
+		
+		public int compareTo(Node<T> other) {
+			return this.val.compareTo(other.val);
 		}
 		
 		public String toString() {
