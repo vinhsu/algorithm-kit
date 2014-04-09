@@ -8,6 +8,7 @@ public class MaxPriorityQueue<T> {
 	private T[] pq;
 	private int N;
 	private Comparator<T> comparator;
+	private T min;
 	
 	public MaxPriorityQueue() {
 		this(1);
@@ -41,9 +42,16 @@ public class MaxPriorityQueue<T> {
         return pq[1];
     }
     
+    public T getMin() {
+    	if (isEmpty()) throw new NoSuchElementException("Priority queue underflow");
+    	return min;
+    }
+    
     public void insert(T x) {
         if (N >= pq.length - 1) resize(pq.length*3/2);
         pq[++N] = x;
+        if (min == null || ((Comparable<T>) x).compareTo(min) < 0)
+        	min = x;   
         swim(N);
     }
     
@@ -132,6 +140,8 @@ public class MaxPriorityQueue<T> {
 		Integer[] b = {50, 34, 17, 99, 83, 246, 777, 13, 8, 57, 62};
 		for (Integer x : b) 
 			pq2.insert(x);
+		
+		System.out.println("min is " + pq2.getMin());
 		
 		while (!pq2.isEmpty()){
 			Integer m = pq2.delMax();
